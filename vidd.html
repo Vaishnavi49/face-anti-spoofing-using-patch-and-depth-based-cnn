@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Antispoofing Detection- Video Application </title>
+</head>
+<body>
+    <h1>Camera Feed</h1>
+    <img id="video_feed" src="{{ url_for('video_feed') }}" width="640" height="480" style="border: 2px solid black;">
+    <br>
+    <button class="button" onclick="startCamera()">Start Camera</button>
+    <button class="button" onclick="stopCamera()">Stop Camera</button>
+
+    <script>
+        function startCamera() {
+            fetch('/start_camera')
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('video_feed').src = "{{ url_for('video_feed') }}";
+                    }
+                });
+        }
+
+        function stopCamera() {
+            fetch('/stop_camera')
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('video_feed').src = "";
+                    }
+                });
+        }
+    </script>
+</body>
+</html>

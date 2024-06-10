@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="main">
+  <div class="title">
+    <h3>Face Antispoofing using Depth and Patch Based CNN</h3>
+    <p>
+     Developed By KLECET CHIKODI
+    </p> 
+  </div>
+
+
+ <h2>Click on Capture Image to Capture Image from the Camera or Upload Image to upload Collected</h2>
+ <div class="container">
+  <div class="row">
+   <div class="col-md-4">
+     <div class="panel">
+    <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
+    <label for="file-upload" id="file-drag" class="upload-box">
+      <div id="upload-caption">Input Image</div>
+      <img id="image-preview" class="hidden" />
+    </label>
+    
+    
+  </div>
+    </div>
+    
+    <div class="col-md-4">
+       <video id="video" width="320" height="240" autoplay></video>
+    </div>
+  
+  
+    <div class="col-md-4">
+       <canvas id="canvas" width="320" height="240"></canvas>
+    </div>
+    </div>
+    </div>
+  
+ 
+  
+
+  <div style="margin-bottom: 2rem;">
+  <button id="start-camera" class="button">Start Camera</button>
+  <button id="stop-camera" class="button">Stop Camera</button>
+<button id="click-photo" class="button">Capture</button>
+
+
+  
+<input type="button" value="Detect" class="button" onclick="submitImage();" />
+  </div>
+
+
+    <input type="button" value="Clear" class="button" onclick="clearImage();" />
+  </div>
+
+
+ <h2>Results will be Displayed Below.</h2>
+  <div id="image-box">
+    <img id="image-display" />
+    <div id="pred-result" class="hidden"></div>
+    <svg id="loader" class="hidden" viewBox="0 0 32 32" width="32" height="32">
+      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+    </svg>
+  </div>
+</div>
+
+{% endblock %}
